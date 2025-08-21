@@ -1,23 +1,13 @@
-/** @type {import('jest').Config} */
+/** @type {import('vitest/config').UserConfig} */
 export default {
-  preset: "ts-jest/presets/default-esm",
-  testEnvironment: "node",
-  roots: ["<rootDir>/tests"],
-  testMatch: ["**/__tests__/**/*.ts", "**/?(*.)+(spec|test).ts"],
-  transform: {
-    "^.+\\.ts$": [
-      "ts-jest",
-      {
-        useESM: true,
-      },
-    ],
-  },
-  collectCoverageFrom: ["src/**/*.ts", "!src/**/*.d.ts"],
-  coverageDirectory: "coverage",
-  coverageReporters: ["text", "lcov", "html"],
-  moduleFileExtensions: ["ts", "js", "json"],
-  extensionsToTreatAsEsm: [".ts"],
-  moduleNameMapper: {
-    "^(\\.{1,2}/.*)\\.js$": "$1",
+  test: {
+    environment: "node",
+    include: ["tests/**/*.{test,spec}.ts"],
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "lcov", "html"],
+      include: ["src/**/*.ts"],
+      exclude: ["src/**/*.d.ts"],
+    },
   },
 };
