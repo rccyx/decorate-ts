@@ -5,6 +5,10 @@ While TypeScript supports experimental decorators, it still lacks fundamental mo
 
 ### Installation
 
+**npm**
+```
+npm i @ashgw/decorators
+```
 **pnpm**
 ```
 pnpm i @ashgw/decorators
