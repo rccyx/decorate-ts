@@ -378,6 +378,7 @@ test("Should not allow to delete the properties of a sealed object", () => {
     }
   }
   expect(() => {
+    // biome-ignore lint/performance/noDelete: Testing delete operation behavior on sealed objects
     delete new Foo("foo").bar;
   }).toThrow(TypeError);
 });
