@@ -35,5 +35,5 @@ jobs:
       - format
       - lint
       - test
-    uses: ./.github/workflows/npm.yml
+    uses: ./.github/workflows/release.yml
     secrets: inherit
