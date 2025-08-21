@@ -157,15 +157,24 @@ export function Sealed<T extends Newable>(cst: T): T & Newable {
 export function Singleton<T extends Newable>(cst: T): T {
   let instance: InstanceType<T>;
 
-  return class Singleton extends cst {
+  const SingletonClass = class extends cst {
     constructor(...args: any[]) {
+      if (instance) {
+        // Don't call super() if we already have an instance
+        throw new Error("Singleton instance already exists");
+      }
       super(...args);
-      if (!instance) {
-        instance = this as InstanceType<T>;
+      instance = this as InstanceType<T>;
+    }
+  };
+
+  // Use Proxy to intercept constructor calls
+  return new Proxy(SingletonClass, {
+    construct(target, args) {
+      if (instance) {
         return instance;
       }
-      // Return the existing singleton instance
-      return instance;
-    }
-  } as T;
+      return new target(...args);
+    },
+  }) as T;
 }

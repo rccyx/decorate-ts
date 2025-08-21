@@ -1,5 +1,5 @@
-import { Final, Frozen, Singleton, Sealed, FinalTypeError } from "../src";
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
+import { Final, FinalTypeError, Frozen, Sealed, Singleton } from "../src";
 
 test('Should not allow inheritance of a final frozen class. "FinalTypeError" should be thrown', () => {
   @Final
@@ -17,11 +17,7 @@ test('Should not allow inheritance of a final frozen class. "FinalTypeError" sho
     }
   }
 
-  class SubFoo extends Foo<string> {
-    constructor(foo: string) {
-      super(foo);
-    }
-  }
+  class SubFoo extends Foo<string> {}
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const _ = new SubFoo("subbedFoo");
@@ -116,18 +112,14 @@ test(`Should not allow inheritance, of the final class, when the final class
     }
   }
 
-  class SubFoo extends Foo<string> {
-    constructor(foo: string) {
-      super(foo);
-    }
-  }
+  class SubFoo extends Foo<string> {}
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const _ = new SubFoo("foo").bar;
   }).toThrow(FinalTypeError);
 });
 
-test(`One limitation, the @Final decorator should be on top of @Frozen not the opposite, otherwise FinalTypeError would be thrown upon instantitation of the final class`, () => {
+test("One limitation, the @Final decorator should be on top of @Frozen not the opposite, otherwise FinalTypeError would be thrown upon instantitation of the final class", () => {
   abstract class BaseFoo<T> {
     abstract someFoo(): T;
   }
@@ -147,11 +139,7 @@ test(`One limitation, the @Final decorator should be on top of @Frozen not the o
     }
   }
 
-  class SubFoo extends Foo<string> {
-    constructor(foo: string) {
-      super(foo);
-    }
-  }
+  class SubFoo extends Foo<string> {}
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const _ = new Foo("foo");
@@ -173,11 +161,7 @@ test("Should not allow inheritance; a FinalTypeError should be thrown", () => {
     }
   }
 
-  class SubFoo extends Foo<string> {
-    constructor(foo: string) {
-      super(foo);
-    }
-  }
+  class SubFoo extends Foo<string> {}
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const _ = new SubFoo("subbedFoo");
@@ -268,11 +252,7 @@ test(`Should not allow inheritance, of the final class, when the final class
     }
   }
 
-  class SubFoo extends Foo<string> {
-    constructor(foo: string) {
-      super(foo);
-    }
-  }
+  class SubFoo extends Foo<string> {}
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
     const _ = new SubFoo("foo").bar;
@@ -331,11 +311,7 @@ test("No problem with instantiation of the sealed class, or the subbed class", (
       return this._foo;
     }
   }
-  class SubFoo extends Foo<string> {
-    constructor(foo: string) {
-      super(foo);
-    }
-  }
+  class SubFoo extends Foo<string> {}
   expect(() => {
     new Foo("foo");
     new SubFoo("foo");
@@ -360,11 +336,7 @@ test("No problem with instantiation of the sealed already subbed class, or the s
       return this._foo;
     }
   }
-  class SubFoo extends Foo<string> {
-    constructor(foo: string) {
-      super(foo);
-    }
-  }
+  class SubFoo extends Foo<string> {}
   expect(() => {
     new Foo("foo");
     new SubFoo("foo");
