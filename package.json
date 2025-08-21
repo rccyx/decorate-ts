@@ -6,10 +6,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
-  "files": [
-    "dist/**/*",
-    "README.md"
-  ],
+  "files": ["dist/**/*", "README.md"],
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -23,13 +20,13 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "lint": "biome check .",
+    "lint": "biome check . && tsc --noEmit",
     "lint:fix": "biome check --write .",
     "format": "biome format .",
     "format:write": "biome format --write .",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build && npm run test && npm run lint",
-    "publish": "npm publish --access public"
+    "release": "npm publish --access public"
   },
   "keywords": [
     "typescript",
@@ -67,3 +64,4 @@
     "node": ">=18"
   }
 }
+

@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
+  format:
+    uses: ./.github/workflows/format.yml
+  test:
+    uses: ./.github/workflows/test.yml
+
+  release:
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - format
+      - lint
+      - test
+    uses: ./.github/workflows/npm.yml
+    secrets: inherit
