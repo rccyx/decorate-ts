@@ -1,12 +1,67 @@
 {
-  "name": "decorators",
-  "module": "index.ts",
+  "name": "@ashgw/decorators",
+  "version": "1.0.0",
+  "description": "TypeScript decorators for Final, Frozen, Sealed, and Singleton patterns",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
+  "files": ["dist/**/*", "README.md"],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format .",
+    "format:write": "biome format --write .",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm run test && npm run lint",
+    "publish:npm": "npm publish --access public"
+  },
+  "keywords": [
+    "typescript",
+    "decorators",
+    "final",
+    "frozen",
+    "sealed",
+    "singleton",
+    "patterns"
+  ],
+  "author": "ashgw",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashgw/decorators.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ashgw/decorators/issues"
+  },
+  "homepage": "https://github.com/ashgw/decorators#readme",
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@types/bun": "latest",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
     "ts-roids": "^1.51.0"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
