@@ -1,5 +1,5 @@
-import { Final, Frozen, Singleton, Sealed, FinalTypeError } from '../src';
-import { test, expect } from 'vitest';
+import { Final, Frozen, Singleton, Sealed, FinalTypeError } from "../src";
+import { test, expect } from "vitest";
 
 test('Should not allow inheritance of a final frozen class. "FinalTypeError" should be thrown', () => {
   @Final
@@ -10,7 +10,7 @@ test('Should not allow inheritance of a final frozen class. "FinalTypeError" sho
 
     constructor(foo: T) {
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -24,11 +24,11 @@ test('Should not allow inheritance of a final frozen class. "FinalTypeError" sho
   }
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const _ = new SubFoo('subbedFoo');
+    const _ = new SubFoo("subbedFoo");
   }).toThrowError(FinalTypeError);
 });
 
-test('Should allow instantiation of a final frozen class with no problems', () => {
+test("Should allow instantiation of a final frozen class with no problems", () => {
   @Final
   @Frozen
   class Foo<T> {
@@ -37,7 +37,7 @@ test('Should allow instantiation of a final frozen class with no problems', () =
 
     constructor(foo: T) {
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -45,11 +45,11 @@ test('Should allow instantiation of a final frozen class with no problems', () =
   }
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const _ = new Foo('foo');
+    const _ = new Foo("foo");
   }).not.toThrow();
 });
 
-test('Should bot allow to alter  attributes of the final frozen class, throws TypeError since it is frozen', () => {
+test("Should bot allow to alter  attributes of the final frozen class, throws TypeError since it is frozen", () => {
   @Final
   @Frozen
   class Foo<T> {
@@ -58,19 +58,19 @@ test('Should bot allow to alter  attributes of the final frozen class, throws Ty
 
     constructor(foo: T) {
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
     }
   }
   expect(() => {
-    const foo = new Foo('foo');
-    foo.bar = 'altered';
+    const foo = new Foo("foo");
+    foo.bar = "altered";
   }).toThrow(TypeError);
 });
 
-test('Should work when the final sealed class is a subclass itself, TypeError should be thrown', () => {
+test("Should work when the final sealed class is a subclass itself, TypeError should be thrown", () => {
   abstract class BaseFoo<T> {
     abstract someFoo(): T;
   }
@@ -83,7 +83,7 @@ test('Should work when the final sealed class is a subclass itself, TypeError sh
     constructor(foo: T) {
       super();
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -91,7 +91,7 @@ test('Should work when the final sealed class is a subclass itself, TypeError sh
   }
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const _ = new Foo('foo').bar;
+    const _ = new Foo("foo").bar;
   }).not.toThrow(TypeError);
 });
 
@@ -109,7 +109,7 @@ test(`Should not allow inheritance, of the final class, when the final class
     constructor(foo: T) {
       super();
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -123,7 +123,7 @@ test(`Should not allow inheritance, of the final class, when the final class
   }
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const _ = new SubFoo('foo').bar;
+    const _ = new SubFoo("foo").bar;
   }).toThrow(FinalTypeError);
 });
 
@@ -140,7 +140,7 @@ test(`One limitation, the @Final decorator should be on top of @Frozen not the o
     constructor(foo: T) {
       super();
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -154,11 +154,11 @@ test(`One limitation, the @Final decorator should be on top of @Frozen not the o
   }
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const _ = new Foo('foo');
+    const _ = new Foo("foo");
   }).toThrow(FinalTypeError);
 });
 
-test('Should not allow inheritance; a FinalTypeError should be thrown', () => {
+test("Should not allow inheritance; a FinalTypeError should be thrown", () => {
   @Final
   class Foo<T> {
     private _foo: T;
@@ -166,7 +166,7 @@ test('Should not allow inheritance; a FinalTypeError should be thrown', () => {
 
     constructor(foo: T) {
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -180,11 +180,11 @@ test('Should not allow inheritance; a FinalTypeError should be thrown', () => {
   }
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const _ = new SubFoo('subbedFoo');
+    const _ = new SubFoo("subbedFoo");
   }).toThrowError(FinalTypeError);
 });
 
-test('Should allow instantiation of a final class with no problems', () => {
+test("Should allow instantiation of a final class with no problems", () => {
   @Final
   class Foo<T> {
     private _foo: T;
@@ -192,7 +192,7 @@ test('Should allow instantiation of a final class with no problems', () => {
 
     constructor(foo: T) {
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -200,11 +200,11 @@ test('Should allow instantiation of a final class with no problems', () => {
   }
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const _ = new Foo('foo');
+    const _ = new Foo("foo");
   }).not.toThrow();
 });
 
-test('Should allow to access attributes of the final class', () => {
+test("Should allow to access attributes of the final class", () => {
   @Final
   class Foo<T> {
     private _foo: T;
@@ -212,7 +212,7 @@ test('Should allow to access attributes of the final class', () => {
 
     constructor(foo: T) {
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -220,11 +220,11 @@ test('Should allow to access attributes of the final class', () => {
   }
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const _ = new Foo('foo').bar;
+    const _ = new Foo("foo").bar;
   }).not.toThrow();
 });
 
-test('Should work when the final class is a subclass itself', () => {
+test("Should work when the final class is a subclass itself", () => {
   abstract class BaseFoo<T> {
     abstract someFoo(): T;
   }
@@ -236,7 +236,7 @@ test('Should work when the final class is a subclass itself', () => {
     constructor(foo: T) {
       super();
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -244,7 +244,7 @@ test('Should work when the final class is a subclass itself', () => {
   }
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const _ = new Foo('foo').bar;
+    const _ = new Foo("foo").bar;
   }).not.toThrow();
 });
 
@@ -261,7 +261,7 @@ test(`Should not allow inheritance, of the final class, when the final class
     constructor(foo: T) {
       super();
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -275,11 +275,11 @@ test(`Should not allow inheritance, of the final class, when the final class
   }
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const _ = new SubFoo('foo').bar;
+    const _ = new SubFoo("foo").bar;
   }).toThrow(FinalTypeError);
-})
+});
 
-test('is the object actually sealed', () => {
+test("is the object actually sealed", () => {
   @Sealed
   class Foo<T> {
     private _foo: T;
@@ -287,16 +287,16 @@ test('is the object actually sealed', () => {
 
     constructor(foo: T) {
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
     }
   }
-  expect(Object.isSealed(new Foo('foo'))).toBeTruthy();
+  expect(Object.isSealed(new Foo("foo"))).toBeTruthy();
 });
 
-test('Should have no problem with instantiation', () => {
+test("Should have no problem with instantiation", () => {
   @Sealed
   class Foo<T> {
     private _foo: T;
@@ -304,7 +304,7 @@ test('Should have no problem with instantiation', () => {
 
     constructor(foo: T) {
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -313,11 +313,11 @@ test('Should have no problem with instantiation', () => {
 
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const _ = new Foo('subbedFoo');
+    const _ = new Foo("subbedFoo");
   }).not.toThrow();
 });
 
-test('No problem with instantiation of the sealed class, or the subbed class', () => {
+test("No problem with instantiation of the sealed class, or the subbed class", () => {
   @Sealed
   class Foo<T> {
     private _foo: T;
@@ -325,7 +325,7 @@ test('No problem with instantiation of the sealed class, or the subbed class', (
 
     constructor(foo: T) {
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -337,12 +337,12 @@ test('No problem with instantiation of the sealed class, or the subbed class', (
     }
   }
   expect(() => {
-    new Foo('foo');
-    new SubFoo('foo');
+    new Foo("foo");
+    new SubFoo("foo");
   }).not.toThrow();
 });
 
-test('No problem with instantiation of the sealed already subbed class, or the subbed class from the frozen class', () => {
+test("No problem with instantiation of the sealed already subbed class, or the subbed class from the frozen class", () => {
   abstract class BaseFoo<T> {
     abstract someFoo(): T;
   }
@@ -354,7 +354,7 @@ test('No problem with instantiation of the sealed already subbed class, or the s
     constructor(foo: T) {
       super();
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -366,12 +366,12 @@ test('No problem with instantiation of the sealed already subbed class, or the s
     }
   }
   expect(() => {
-    new Foo('foo');
-    new SubFoo('foo');
+    new Foo("foo");
+    new SubFoo("foo");
   }).not.toThrow();
 });
 
-test('Should be allowed to mutate the properties of a sealed object', () => {
+test("Should be allowed to mutate the properties of a sealed object", () => {
   @Sealed
   class Foo<T> {
     private _foo: T;
@@ -379,19 +379,19 @@ test('Should be allowed to mutate the properties of a sealed object', () => {
 
     constructor(foo: T) {
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
     }
   }
   expect(() => {
-    const foo = new Foo('foo');
-    foo.bar = 'altered';
+    const foo = new Foo("foo");
+    foo.bar = "altered";
   }).not.toThrow(TypeError);
 });
 
-test('Should not allow to delete the properties of a sealed object', () => {
+test("Should not allow to delete the properties of a sealed object", () => {
   @Sealed
   class Foo<T> {
     private _foo: T;
@@ -399,18 +399,18 @@ test('Should not allow to delete the properties of a sealed object', () => {
 
     constructor(foo: T) {
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
     }
   }
   expect(() => {
-    delete new Foo('foo').bar;
+    delete new Foo("foo").bar;
   }).toThrow(TypeError);
 });
 
-test('Should work when the final class is a subclass itself', () => {
+test("Should work when the final class is a subclass itself", () => {
   abstract class BaseFoo<T> {
     abstract someFoo(): T;
   }
@@ -422,7 +422,7 @@ test('Should work when the final class is a subclass itself', () => {
     constructor(foo: T) {
       super();
       this._foo = foo;
-      this.bar = 'bar';
+      this.bar = "bar";
     }
     someFoo(): T {
       return this._foo;
@@ -430,11 +430,11 @@ test('Should work when the final class is a subclass itself', () => {
   }
   expect(() => {
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const _ = new Foo('foo').bar;
+    const _ = new Foo("foo").bar;
   }).not.toThrow();
 });
 
-test('should return the same instance when attempting to create multiple instances', () => {
+test("should return the same instance when attempting to create multiple instances", () => {
   @Singleton
   class Foo {
     value: string;
@@ -444,14 +444,14 @@ test('should return the same instance when attempting to create multiple instanc
     }
   }
 
-  const foo1 = new Foo('first');
-  const foo2 = new Foo('second');
+  const foo1 = new Foo("first");
+  const foo2 = new Foo("second");
 
   expect(foo1).toBe(foo2);
-  expect(foo1.value).toBe('first');
+  expect(foo1.value).toBe("first");
 });
 
-test('should have no problem with instantiation', () => {
+test("should have no problem with instantiation", () => {
   @Singleton
   class Foo {
     value: string;
@@ -462,11 +462,11 @@ test('should have no problem with instantiation', () => {
   }
 
   expect(() => {
-    new Foo('value');
+    new Foo("value");
   }).not.toThrow();
 });
 
-test('should ensure singleton across different invocations', () => {
+test("should ensure singleton across different invocations", () => {
   @Singleton
   class Foo {
     value: string;
@@ -476,14 +476,14 @@ test('should ensure singleton across different invocations', () => {
     }
   }
 
-  const foo1 = new Foo('foo');
-  const foo2 = new Foo('bar');
+  const foo1 = new Foo("foo");
+  const foo2 = new Foo("bar");
 
   expect(foo1).toBe(foo2);
-  expect(foo1.value).toBe('foo');
+  expect(foo1.value).toBe("foo");
 });
 
-test('should not allow overriding the singleton instance', () => {
+test("should not allow overriding the singleton instance", () => {
   @Singleton
   class Foo {
     value: string;
@@ -493,14 +493,14 @@ test('should not allow overriding the singleton instance', () => {
     }
   }
 
-  const foo1 = new Foo('initial');
-  const foo2 = new Foo('changed');
+  const foo1 = new Foo("initial");
+  const foo2 = new Foo("changed");
 
   expect(foo1).toBe(foo2);
-  expect(foo2.value).toBe('initial');
+  expect(foo2.value).toBe("initial");
 });
 
-test('should return the same instance even after multiple constructor calls', () => {
+test("should return the same instance even after multiple constructor calls", () => {
   @Singleton
   class Foo {
     value: string;
@@ -510,12 +510,11 @@ test('should return the same instance even after multiple constructor calls', ()
     }
   }
 
-  const foo1 = new Foo('first');
-  const foo2 = new Foo('second');
-  const foo3 = new Foo('third');
+  const foo1 = new Foo("first");
+  const foo2 = new Foo("second");
+  const foo3 = new Foo("third");
 
   expect(foo1).toBe(foo2);
   expect(foo1).toBe(foo3);
-  expect(foo3.value).toBe('first');
-})
-
+  expect(foo3.value).toBe("first");
+});
