@@ -1,23 +1,20 @@
 /** @type {import('jest').Config} */
-module.exports = {
-  preset: "ts-jest",
+export default {
+  preset: "ts-jest/presets/default-esm",
   testEnvironment: "node",
   roots: ["<rootDir>/tests"],
   testMatch: ["**/__tests__/**/*.ts", "**/?(*.)+(spec|test).ts"],
   transform: {
-    "^.+\\.ts$": "ts-jest",
+    "^.+\\.ts$": ["ts-jest", {
+      useESM: true,
+    }],
   },
   collectCoverageFrom: ["src/**/*.ts", "!src/**/*.d.ts"],
   coverageDirectory: "coverage",
   coverageReporters: ["text", "lcov", "html"],
   moduleFileExtensions: ["ts", "js", "json"],
   extensionsToTreatAsEsm: [".ts"],
-  globals: {
-    "ts-jest": {
-      useESM: true,
-    },
-  },
-  moduleNameMapping: {
+  moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
 };
