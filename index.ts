@@ -1,4 +1,4 @@
-import type { Newable } from 'ts-roids';
+import type { Newable } from "ts-roids";
 
 /**
  * @hidden
@@ -47,9 +47,9 @@ export const Final = <CST extends Newable>(cst: CST): CST => {
     }
   }
 
-  Reflect.defineProperty(F, 'name', {
+  Reflect.defineProperty(F, "name", {
     // eslint-disable-next-line
-    value: (cst as any).name || 'Final',
+    value: (cst as any).name || "Final",
   });
 
   return F as CST;
@@ -168,4 +168,3 @@ export function Singleton<T extends Newable>(cst: T): T {
     }
   };
 }
-
