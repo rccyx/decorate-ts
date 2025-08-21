@@ -122,4 +122,6 @@ john.age = 31; // No Errors
 
 delete john.age; // TypeError: Cannot delete property 'age'
 ```
+## License
+[MIT](/LICENSE)
 
