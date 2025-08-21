@@ -11,4 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/prepare
+
       - run: bun run release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
