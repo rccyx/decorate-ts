@@ -2,6 +2,14 @@
 
 While TypeScript supports experimental decorators, it still lacks fundamental modifiers like final, sealed, or frozen that exist in other languages. This package patches those gaps with pragmatic decorators that enforce runtime and semantic constraints you'd often expect but cannot express in TS out of the box.
 
+
+### Installation
+
+**pnpm**
+```
+pnpm i @ashgw/decorators
+```
+
 #### Setup
 
 Set this in your TypeScript config file.
