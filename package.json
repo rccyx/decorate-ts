@@ -26,7 +26,7 @@
     "format:write": "biome format --write .",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build && npm run test && npm run lint",
-    "publish:npm": "npm publish --access public"
+    "publish": "npm publish --access public"
   },
   "keywords": [
     "typescript",
@@ -64,3 +64,4 @@
     "node": ">=18"
   }
 }
+
