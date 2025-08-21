@@ -1,6 +1,10 @@
 # decorators
 
-Set this.
+While TypeScript supports experimental decorators, it still lacks fundamental modifiers like final, sealed, or frozen that exist in other languages. This package patches those gaps with pragmatic decorators that enforce runtime and semantic constraints you'd often expect but cannot express in TS out of the box.
+
+#### Setup
+
+Set this in your TypeScript config file.
 
 ```json
 {
@@ -118,3 +122,4 @@ john.age = 31; // No Errors
 
 delete john.age; // TypeError: Cannot delete property 'age'
 ```
+

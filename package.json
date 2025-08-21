@@ -6,7 +6,10 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
-  "files": ["dist/**/*", "README.md"],
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -64,4 +67,3 @@
     "node": ">=18"
   }
 }
-
