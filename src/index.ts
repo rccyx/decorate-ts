@@ -162,9 +162,10 @@ export function Singleton<T extends Newable>(cst: T): T {
       super(...args);
       if (!instance) {
         instance = this as InstanceType<T>;
+        return instance;
       }
-      // Copy properties from singleton instance to current instance
-      Object.assign(this, instance);
+      // Return the existing singleton instance
+      return instance;
     }
   } as T;
 }
