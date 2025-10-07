@@ -6,7 +6,6 @@ on:
 
 jobs:
   release:
-    environment: release
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -25,20 +24,34 @@ jobs:
           bun run test
           bun run lint
 
-      - name: Setup Node for npm publish
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           registry-url: 'https://registry.npmjs.org'
           always-auth: true
 
+      - name: Verify NPM_TOKEN
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "❌ NPM_TOKEN is missing" >&2
+            exit 1
+          fi
+          echo "✅ Token length: ${#NODE_AUTH_TOKEN}"
+
       - name: Authenticate npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          npm whoami || true
 
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
+          npm publish --access public
 
