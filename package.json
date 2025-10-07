@@ -6,10 +6,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
-  "files": [
-    "dist/**/*",
-    "README.md"
-  ],
+  "files": ["dist/**/*", "README.md"],
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -17,16 +14,14 @@
     }
   },
   "scripts": {
-    "build": "tsc",
     "clean": "rm -rf dist",
-    "prebuild": "npm run clean",
+    "build": "npm run clean && tsc",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "lint": "biome check . && tsc --noEmit",
-    "lint:fix": "biome check --write .",
-    "format": "biome format .",
-    "format:write": "biome format --write .",
+    "lint": "biome check --write . && tsc --noEmit",
+    "lint:fix": "biome check --write . && tsc --noEmit",
+    "format": "biome format --write .",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build && npm run test && npm run lint",
     "release": "npm publish --access public"
@@ -67,4 +62,3 @@
     "node": ">=18"
   }
 }
-
