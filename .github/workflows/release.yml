@@ -1,4 +1,4 @@
-name: ci
+name: release
 
 on:
   workflow_dispatch:
@@ -9,13 +9,17 @@ jobs:
     environment: release
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+      id-token: write   # required for npm provenance (optional but modern)
+
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
+
       - uses: ./.github/actions/prepare
+
       - name: Build + Test + Lint
         run: |
           bun run build
@@ -24,6 +28,15 @@ jobs:
 
       - name: Setup Node for npm publish
         uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          registry-url: 'https://registry.npmjs.org'
+          always-auth: true
+
+      - name: Authenticate npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
 
       - name: Publish to npm
         env:
