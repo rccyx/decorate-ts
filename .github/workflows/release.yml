@@ -24,12 +24,9 @@ jobs:
 
       - name: Setup Node for npm publish
         uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          registry-url: https://registry.npmjs.org
-          scope: "@ashgw"
 
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public
+

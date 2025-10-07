@@ -1,5 +1,5 @@
 {
-  "name": "@ashgw/decorators",
+  "name": "decrorate-ts",
   "version": "1.0.0",
   "description": "TypeScript decorators for Final, Frozen, Sealed, and Singleton patterns",
   "main": "dist/index.js",
@@ -37,16 +37,16 @@
     "singleton",
     "patterns"
   ],
-  "author": "ashgw",
+  "author": "@rccyx",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ashgw/decorators.git"
+    "url": "git+https://github.com/rccyx/decorators.git"
   },
   "bugs": {
-    "url": "https://github.com/ashgw/decorators/issues"
+    "url": "https://github.com/rccyx/decorators/issues"
   },
-  "homepage": "https://github.com/ashgw/decorators#readme",
+  "homepage": "https://github.com/rccyx/decorators#readme",
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/bun": "latest",
@@ -64,3 +64,4 @@
     "node": ">=18"
   }
 }
+
