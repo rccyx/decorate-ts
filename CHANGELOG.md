@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.0.2 2025-10-07
+
+### Changes since v1.0.0
+- b7f8511 chore: bump version to 1.0.2
+- dbe0588 fix scripts
+- 65216a4 fix lint
+- 99acd56 fix typo
+- df3ebbe fix name
+
+### Authors
+- rccyx (6 commits)
+
+### Compare
+https://github.com/ashgw/decorators/compare/v1.0.0...v1.0.2
+
+
 ## v1.0.0 2025-10-07
 
 ### Changes since 267989bfd7cbeaa5ade696b7eeb11b4f4f38ac6d
