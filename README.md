@@ -1,4 +1,4 @@
-# decrorate-ts
+# decorate-ts
 
 While TypeScript supports experimental decorators, it still lacks fundamental modifiers like final, sealed, or frozen that exist in other languages. This package patches those gaps with pragmatic decorators that enforce runtime and semantic constraints you'd often expect but cannot express in TS out of the box.
 
@@ -7,11 +7,11 @@ While TypeScript supports experimental decorators, it still lacks fundamental mo
 
 **npm**
 ```
-npm i decrorate-ts
+npm i decorate-ts
 ```
 **pnpm**
 ```
-pnpm i decrorate-ts
+pnpm i decorate-ts
 ```
 
 #### Setup
@@ -40,7 +40,7 @@ Finalize and freeze objects
 
 ```ts
 import type { Optional, NewType, MaybeUndefined } from "ts-roids";
-import { Final, Frozen, Singleton } from "decrorate-ts";
+import { Final, Frozen, Singleton } from "decorate-ts";
 
 type Bar = NewType<"Bar", string>;
 type Baz = NewType<"Baz", string>;
