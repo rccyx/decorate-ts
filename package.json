@@ -1,6 +1,6 @@
 {
   "name": "decorate-ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "TypeScript decorators for Final, Frozen, Sealed, and Singleton patterns",
   "main": "dist/index.js",
   "module": "dist/index.js",
