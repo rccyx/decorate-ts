@@ -39,7 +39,7 @@ Set this in your TypeScript config file.
 Finalize and freeze objects
 
 ```ts
-import type { Optional, NewType, MaybeUndefined } from "ts-roids";
+import type { Optional, NewType, MaybeUndefined } from "typyx";
 import { Final, Frozen, Singleton } from "decorate-ts";
 
 type Bar = NewType<"Bar", string>;
